@@ -12,10 +12,18 @@ pipeline {
             steps {
                 script {
                     dockerImage = docker.build("my-image:${env.BUILD_ID}")
-                    dockerImage.push()
                 }
             }
         }
-
+        stage("Test") {
+            steps {
+                echo "Test"
+            }
+        }
+        stage("Release") {
+            steps {
+                echo "Release"
+            }
+        }
     }
 }
