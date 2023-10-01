@@ -8,4 +8,5 @@ RUN python -m venv /tmp/venv && \
     . /tmp/venv/bin/activate && \
     pip install -r requirements.txt --no-cache-dir
 
-
+COPY main.py main.py
+CMD ["python", "main.py"]
