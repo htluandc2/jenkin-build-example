@@ -1,31 +1,18 @@
 pipeline {
     agent none
 
-    def app1
+    environment {
+        registry = "MyRegistry"
+        registryCredential = "cc628db2-1ca8-4913-b987-264adb97801d"
+        dockerImage = "Test"
+    }
 
     stages {
         stage("Build") {
-            agent {
-                docker {
-                    image 'python:3.11.5-alpine3.18'
-                }
-            }
             steps {
-                sh '''
-                    python --version
-                    python -m venv .venv
-                    . .venv/bin/activate
-                    pip install -r requirements.txt
-                    python main.py
-                '''
-                app1 = docker.build("SamplePipeline/p1")
-            }
-        }
-        stage("Test") {
-            app1.inside {
-                sh '''
-                    python main.py
-                '''
+                script {
+                    dockerImage = docker.build registry
+                }
             }
         }
 
