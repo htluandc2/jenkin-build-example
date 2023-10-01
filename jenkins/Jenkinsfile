@@ -1,5 +1,8 @@
 pipeline {
     agent none
+
+    def app1
+
     stages {
         stage("Build") {
             agent {
@@ -13,6 +16,14 @@ pipeline {
                     python -m venv .venv
                     . .venv/bin/activate
                     pip install -r requirements.txt
+                    python main.py
+                '''
+                app1 = docker.build("SamplePipeline/p1")
+            }
+        }
+        stage("Test") {
+            app1.inside {
+                sh '''
                     python main.py
                 '''
             }
