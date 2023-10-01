@@ -10,7 +10,6 @@ pipeline {
     stages {
         stage("Build") {
             steps {
-                sh "ls -a"
                 script {
                     dockerImage = docker.build registry
                 }
