@@ -1,5 +1,5 @@
 pipeline {
-    agent none
+    agent any
 
     environment {
         registry = "my_registry"
@@ -11,7 +11,8 @@ pipeline {
         stage("Build") {
             steps {
                 script {
-                    dockerImage = docker.build registry
+                    dockerImage = docker.build("my-image:${env.BUILD_ID}")
+                    dockerImage.push()
                 }
             }
         }
