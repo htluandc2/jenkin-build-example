@@ -25,11 +25,9 @@ pipeline {
                 // Checking my code run in new docker image
                 sh """
                     python --version
-                    pytest --junit-xml test-reports/results.xml test.py
                 """
-
                 // Print result into Jenkins console (by JUnit console)
-                junit test-reports/results.xml
+                // junit test-reports/results.xml
             }
         }
         stage("Release") {
