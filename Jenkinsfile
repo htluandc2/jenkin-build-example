@@ -31,10 +31,5 @@ pipeline {
                 // junit test-reports/results.xml
             }
         }
-        stage("Release") {
-            steps {
-                echo "Release"
-            }
-        }
     }
 }
