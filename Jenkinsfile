@@ -27,9 +27,13 @@ pipeline {
                     python --version
                     pytest --junit-xml test-reports/results.xml test.py
                 """
-                // Print result into Jenkins console (by JUnit console)
-                junit test-reports/results.xml
             }
+        }
+    }
+    post {
+        always {
+            // Print result into Jenkins console (by JUnit console)
+            junit test-reports/results.xml
         }
     }
 }
