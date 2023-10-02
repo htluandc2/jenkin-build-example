@@ -16,9 +16,20 @@ pipeline {
             }
         }
         stage("Test") {
-            steps {
-                echo "Test"
+            agent { 
+                docker { 
+                    image "my-image:${env.BUILD_ID}" 
+                } 
             }
+            // Checking my code run in new docker image
+            sh "python --version"
+
+            // Run unittest and report
+            sh " py.test --junit-xml test-reports/results.xml test.py"
+            
+            // Print result into Jenkins console (by JUnit console)
+            junit test-reports/results.xml
+
         }
         stage("Release") {
             steps {
