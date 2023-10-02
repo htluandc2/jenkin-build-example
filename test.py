@@ -7,7 +7,7 @@ class TestCalc(unittest.TestCase):
     """
     def test_add_2_ints(self):
         result = calc.add2args(2, 3)
-        self.assertEqual(result, 6)
+        self.assertEqual(result, 5)
 
     def test_add_2_floats(self):
         self.assertEqual(calc.add2args(2.0, 3.1), 5.1)
