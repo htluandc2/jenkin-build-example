@@ -23,8 +23,11 @@ pipeline {
             }
             steps {
                 // Checking my code run in new docker image
-                sh "python --version"
-
+                sh """
+                    python --version
+                    python -m venv /tmp/venv
+                    . /tmp/venv/bin/activate
+                """
                 // Run unittest and report
                 sh " pytest --junit-xml test-reports/results.xml test.py"
 
