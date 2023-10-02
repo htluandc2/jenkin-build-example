@@ -28,7 +28,7 @@ pipeline {
                     pytest --junit-xml test-reports/results.xml test.py
                 """
                 // Print result into Jenkins console (by JUnit console)
-                junit test-reports/results.xml
+                // junit test-reports/results.xml
             }
         }
         stage("Release") {
