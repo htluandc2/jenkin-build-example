@@ -26,7 +26,7 @@ pipeline {
                 sh "python --version"
 
                 // Run unittest and report
-                sh " py.test --junit-xml test-reports/results.xml test.py"
+                sh " pytest --junit-xml test-reports/results.xml test.py"
 
                 // Print result into Jenkins console (by JUnit console)
                 junit test-reports/results.xml
