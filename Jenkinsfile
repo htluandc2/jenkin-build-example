@@ -30,10 +30,11 @@ pipeline {
             }
         }
     }
-    post {
-        always {
-            // Print result into Jenkins console (by JUnit console)
-            // junit "test-reports/results.xml"
-        }
-    }
+    // post {
+    //     always {
+    //         // Print result into Jenkins console (by JUnit console)
+    //         // junit "test-reports/results.xml"
+    //         sh "ls -a"
+    //     }
+    // }
 }
