@@ -25,11 +25,8 @@ pipeline {
                 // Checking my code run in new docker image
                 sh """
                     python --version
-                    python -m venv /tmp/venv
-                    . /tmp/venv/bin/activate
+                    pytest --junit-xml test-reports/results.xml test.py
                 """
-                // Run unittest and report
-                sh " pytest --junit-xml test-reports/results.xml test.py"
 
                 // Print result into Jenkins console (by JUnit console)
                 junit test-reports/results.xml
