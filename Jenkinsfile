@@ -33,7 +33,7 @@ pipeline {
     post {
         always {
             // Print result into Jenkins console (by JUnit console)
-            junit "test-reports/results.xml"
+            // junit "test-reports/results.xml"
         }
     }
 }
